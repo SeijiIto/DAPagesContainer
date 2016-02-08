@@ -408,26 +408,45 @@
             UIButton *nextSelectedItem = self.topBar.itemViews[targetIndex];
             
             
-            
-            CGFloat red, green, blue, alpha, highlightedRed, highlightedGreen, highlightedBlue, highlightedAlpha;
-            [self getRed:&red green:&green blue:&blue alpha:&alpha fromColor:self.pageItemsTitleColor];
-            [self getRed:&highlightedRed green:&highlightedGreen blue:&highlightedBlue alpha:&highlightedAlpha fromColor:self.selectedPageItemTitleColor];
-            
-            CGFloat absRatio = fabsf(ratio);
-            UIColor *prev = [UIColor colorWithRed:red * absRatio + highlightedRed * (1 - absRatio)
-                                            green:green * absRatio + highlightedGreen * (1 - absRatio)
-                                             blue:blue * absRatio + highlightedBlue  * (1 - absRatio)
-                                            alpha:alpha * absRatio + highlightedAlpha  * (1 - absRatio)];
-            UIColor *next = [UIColor colorWithRed:red * (1 - absRatio) + highlightedRed * absRatio
-                                            green:green * (1 - absRatio) + highlightedGreen * absRatio
-                                             blue:blue * (1 - absRatio) + highlightedBlue * absRatio
-                                            alpha:alpha * (1 - absRatio) + highlightedAlpha * absRatio];
-            
-            [previosSelectedItem setTitleColor:prev forState:UIControlStateNormal];
-            [nextSelectedItem setTitleColor:next forState:UIControlStateNormal];
-            
-            
-            
+					{
+						CGFloat red, green, blue, alpha, highlightedRed, highlightedGreen, highlightedBlue, highlightedAlpha;
+						[self getRed:&red green:&green blue:&blue alpha:&alpha fromColor:self.pageItemsTitleColor];
+						[self getRed:&highlightedRed green:&highlightedGreen blue:&highlightedBlue alpha:&highlightedAlpha fromColor:self.selectedPageItemTitleColor];
+						
+						CGFloat absRatio = fabsf(ratio);
+						UIColor *prev = [UIColor colorWithRed:red * absRatio + highlightedRed * (1 - absRatio)
+																						green:green * absRatio + highlightedGreen * (1 - absRatio)
+																						 blue:blue * absRatio + highlightedBlue  * (1 - absRatio)
+																						alpha:alpha * absRatio + highlightedAlpha  * (1 - absRatio)];
+						UIColor *next = [UIColor colorWithRed:red * (1 - absRatio) + highlightedRed * absRatio
+																						green:green * (1 - absRatio) + highlightedGreen * absRatio
+																						 blue:blue * (1 - absRatio) + highlightedBlue * absRatio
+																						alpha:alpha * (1 - absRatio) + highlightedAlpha * absRatio];
+						
+						[previosSelectedItem setTitleColor:prev forState:UIControlStateNormal];
+						[nextSelectedItem setTitleColor:next forState:UIControlStateNormal];
+					}
+					
+					{
+						CGFloat red, green, blue, alpha, highlightedRed, highlightedGreen, highlightedBlue, highlightedAlpha;
+						[self getRed:&red green:&green blue:&blue alpha:&alpha fromColor:self.topBarBackgroundColor];
+						[self getRed:&highlightedRed green:&highlightedGreen blue:&highlightedBlue alpha:&highlightedAlpha fromColor:self.selectedPageItemBackgroundColor];
+						
+						CGFloat absRatio = fabsf(ratio);
+						UIColor *prev = [UIColor colorWithRed:red * absRatio + highlightedRed * (1 - absRatio)
+																						green:green * absRatio + highlightedGreen * (1 - absRatio)
+																						 blue:blue * absRatio + highlightedBlue  * (1 - absRatio)
+																						alpha:alpha * absRatio + highlightedAlpha  * (1 - absRatio)];
+						UIColor *next = [UIColor colorWithRed:red * (1 - absRatio) + highlightedRed * absRatio
+																						green:green * (1 - absRatio) + highlightedGreen * absRatio
+																						 blue:blue * (1 - absRatio) + highlightedBlue * absRatio
+																						alpha:alpha * (1 - absRatio) + highlightedAlpha * absRatio];
+						
+						[previosSelectedItem setBackgroundColor:prev];
+						[nextSelectedItem setBackgroundColor:next];
+					}
+					
+					
             if (scrollingTowards) {
                 self.topBar.scrollView.contentOffset = CGPointMake(previousItemContentOffsetX +
                                                                    (nextItemContentOffsetX - previousItemContentOffsetX) * ratio , 0.);

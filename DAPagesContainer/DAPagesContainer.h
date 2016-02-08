@@ -71,6 +71,12 @@
 @property (strong, nonatomic) UIColor *selectedPageItemTitleColor;
 
 /**
+ A color of the selected view titles displayed on the top bar.
+ This is white by default.
+ */
+@property (strong, nonatomic) UIColor *selectedPageItemBackgroundColor;
+
+/**
  Changes 'selectedIndex' property value and navigates to the newly selected view controller
  @param selectedIndex This mathod throws exeption if selectedIndex is out of range of the 'viewControllers' array
  @param animated Defines whether to present the corresponding view controller animated

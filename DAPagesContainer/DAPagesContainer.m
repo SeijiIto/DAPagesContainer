@@ -209,6 +209,14 @@
     }
 }
 
+- (void)setSelectedPageItemBackgroundColor:(UIColor *)selectedPageItemBackgroundColor
+{
+    if (![_selectedPageItemBackgroundColor isEqual:selectedPageItemBackgroundColor]) {
+        _selectedPageItemBackgroundColor = selectedPageItemBackgroundColor;
+        [self.topBar.itemViews[self.selectedIndex] setBackgroundColor:selectedPageItemBackgroundColor];
+    }
+}
+
 - (void)setTopBarBackgroundColor:(UIColor *)topBarBackgroundColor
 {
     _topBarBackgroundColor = topBarBackgroundColor;

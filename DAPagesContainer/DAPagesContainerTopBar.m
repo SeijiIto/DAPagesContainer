@@ -106,9 +106,10 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
 - (UIButton *)addItemView
 {
     CGRect frame = CGRectMake(0., 0., DAPagesContainerTopBarItemViewWidth, CGRectGetHeight(self.frame));
-    UIButton *itemView = [[UIButton alloc] initWithFrame:frame];
+    UIButton *itemView = [UIButton buttonWithType:UIButtonTypeCustom];
     [itemView addTarget:self action:@selector(itemViewTapped:) forControlEvents:UIControlEventTouchUpInside];
     itemView.titleLabel.font = self.font;
+    itemView.frame = frame;
     [itemView setTitleColor:self.itemTitleColor forState:UIControlStateNormal];
     [self.scrollView addSubview:itemView];
     return itemView;

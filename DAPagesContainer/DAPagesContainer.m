@@ -126,8 +126,10 @@
         }
         [UIView animateWithDuration:(animated) ? 0.3 : 0. delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:^
          {
-             [previosSelectdItem setTitleColor:self.pageItemsTitleColor forState:UIControlStateNormal];
-             [nextSelectdItem setTitleColor:self.selectedPageItemTitleColor forState:UIControlStateNormal];
+					 [previosSelectdItem setTitleColor:self.pageItemsTitleColor forState:UIControlStateNormal];
+					 [previosSelectdItem setBackgroundColor:self.topBarBackgroundColor];
+					 [nextSelectdItem setTitleColor:self.selectedPageItemTitleColor forState:UIControlStateNormal];
+					 [nextSelectdItem setBackgroundColor:self.selectedPageItemBackgroundColor];
          } completion:nil];
     } else {
         // This means we should "jump" over at least one view controller
@@ -153,8 +155,10 @@
             self.pageIndicatorView.center = CGPointMake([self.topBar centerForSelectedItemAtIndex:selectedIndex].x,
                                                         [self pageIndicatorCenterY]);
             self.topBar.scrollView.contentOffset = [self.topBar contentOffsetForSelectedItemAtIndex:selectedIndex];
-            [previosSelectdItem setTitleColor:self.pageItemsTitleColor forState:UIControlStateNormal];
-            [nextSelectdItem setTitleColor:self.selectedPageItemTitleColor forState:UIControlStateNormal];
+					[previosSelectdItem setTitleColor:self.pageItemsTitleColor forState:UIControlStateNormal];
+					[previosSelectdItem setBackgroundColor:self.topBarBackgroundColor];
+					[nextSelectdItem setTitleColor:self.selectedPageItemTitleColor forState:UIControlStateNormal];
+					[nextSelectdItem setBackgroundColor:self.selectedPageItemBackgroundColor];
         } completion:^(BOOL finished) {
             for (NSUInteger i = 0; i < self.viewControllers.count; i++) {
                 UIViewController *viewController = self.viewControllers[i];

@@ -126,11 +126,11 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
 {
     CGFloat x = DAPagesContainerTopBarItemsOffset;
     for (NSUInteger i = 0; i < self.itemViews.count; i++) {
-        CGFloat width = [self.itemTitles[i] sizeWithFont:self.font].width + 8.0f;
-        CGFloat height = [self.itemTitles[i] sizeWithFont:self.font].height + 8.0f;
-			CGFloat y = CGRectGetHeight(self.frame) - height / 2.0f;
+        CGFloat width = [self.itemTitles[i] sizeWithFont:self.font].width + 12.0f;
+        CGFloat height = [self.itemTitles[i] sizeWithFont:self.font].height + 12.0f;
+        CGFloat y = CGRectGetHeight(self.frame) - height / 2.0f;
         UIView *itemView = self.itemViews[i];
-        itemView.frame = CGRectMake(x, 0., width, height);
+        itemView.frame = CGRectMake(x, y, width, height);
         x += width + DAPagesContainerTopBarItemsOffset;
     }
     self.scrollView.contentSize = CGSizeMake(x, CGRectGetHeight(self.scrollView.frame));

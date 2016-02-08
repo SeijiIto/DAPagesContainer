@@ -197,6 +197,7 @@
         _pageItemsTitleColor = pageItemsTitleColor;
         self.topBar.itemTitleColor = pageItemsTitleColor;
         [self.topBar.itemViews[self.selectedIndex] setTitleColor:self.selectedPageItemTitleColor forState:UIControlStateNormal];
+  			[self.topBar.itemViews[self.selectedIndex] setBackgroundColor:self.selectedPageItemBackgroundColor];
     }
 }
 

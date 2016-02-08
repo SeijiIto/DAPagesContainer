@@ -105,7 +105,7 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
 
 - (UIButton *)addItemView
 {
-    CGRect frame = CGRectMake(0., 0., DAPagesContainerTopBarItemViewWidth, CGRectGetHeight(self.frame) / 2);
+    CGRect frame = CGRectMake(0., 0., DAPagesContainerTopBarItemViewWidth, CGRectGetHeight(self.frame));
     UIButton *itemView = [UIButton buttonWithType:UIButtonTypeCustom];
     [itemView addTarget:self action:@selector(itemViewTapped:) forControlEvents:UIControlEventTouchUpInside];
     itemView.titleLabel.font = self.font;
@@ -128,7 +128,7 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
     for (NSUInteger i = 0; i < self.itemViews.count; i++) {
         CGFloat width = [self.itemTitles[i] sizeWithFont:self.font].width;
         UIView *itemView = self.itemViews[i];
-        itemView.frame = CGRectMake(x, 0., width, CGRectGetHeight(self.frame));
+        itemView.frame = CGRectMake(x, 0., width, [self.itemTitles[i] sizeWithFont:self.font].height + 8.0f);
         x += width + DAPagesContainerTopBarItemsOffset;
     }
     self.scrollView.contentSize = CGSizeMake(x, CGRectGetHeight(self.scrollView.frame));

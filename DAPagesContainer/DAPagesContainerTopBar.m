@@ -110,7 +110,7 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
     [itemView addTarget:self action:@selector(itemViewTapped:) forControlEvents:UIControlEventTouchUpInside];
     itemView.titleLabel.font = self.font;
     itemView.frame = frame;
-	[[itemView layer] setCornerRadius:10.0];
+	[[itemView layer] setCornerRadius:6.0];
 	[itemView setClipsToBounds:YES];
     [itemView setTitleColor:self.itemTitleColor forState:UIControlStateNormal];
     [self.scrollView addSubview:itemView];
@@ -126,9 +126,11 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
 {
     CGFloat x = DAPagesContainerTopBarItemsOffset;
     for (NSUInteger i = 0; i < self.itemViews.count; i++) {
-        CGFloat width = [self.itemTitles[i] sizeWithFont:self.font].width;
+        CGFloat width = [self.itemTitles[i] sizeWithFont:self.font].width + 8.0f;
+        CGFloat height = [self.itemTitles[i] sizeWithFont:self.font].height + 8.0f;
+			CGFloat y = CGRectGetHeight(self.frame) - height / 2.0f;
         UIView *itemView = self.itemViews[i];
-        itemView.frame = CGRectMake(x, 0., width, [self.itemTitles[i] sizeWithFont:self.font].height + 8.0f);
+        itemView.frame = CGRectMake(x, 0., width, height);
         x += width + DAPagesContainerTopBarItemsOffset;
     }
     self.scrollView.contentSize = CGSizeMake(x, CGRectGetHeight(self.scrollView.frame));

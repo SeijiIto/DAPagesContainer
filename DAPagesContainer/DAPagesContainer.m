@@ -383,7 +383,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    self.scrollView.userInteractionEnabled = NO;
+    self.scrollView.userInteractionEnabled = YES;
 }
 
 #pragma mark - KVO

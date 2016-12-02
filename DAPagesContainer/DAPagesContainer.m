@@ -423,8 +423,8 @@
 																						 blue:blue * (1 - absRatio) + highlightedBlue * absRatio
 																						alpha:alpha * (1 - absRatio) + highlightedAlpha * absRatio];
 						
-						[previosSelectedItem setTitleColor:prev forState:UIControlStateNormal];
-						[nextSelectedItem setTitleColor:next forState:UIControlStateNormal];
+						//[previosSelectedItem setTitleColor:prev forState:UIControlStateNormal];
+						//[nextSelectedItem setTitleColor:next forState:UIControlStateNormal];
 					}
 					
 					{
@@ -442,8 +442,8 @@
 																						 blue:blue * (1 - absRatio) + highlightedBlue * absRatio
 																						alpha:alpha * (1 - absRatio) + highlightedAlpha * absRatio];
 						
-						[previosSelectedItem setBackgroundColor:prev];
-						[nextSelectedItem setBackgroundColor:next];
+						//[previosSelectedItem setBackgroundColor:prev];
+						//[nextSelectedItem setBackgroundColor:next];
 					}
 					
 					

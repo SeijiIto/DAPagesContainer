@@ -11,6 +11,15 @@
 #import "DAPagesContainerTopBar.h"
 #import "DAPageIndicatorView.h"
 
+NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
+	CGSize nativeSize = UIScreen.mainScreen.nativeBounds.size;
+	CGFloat w =  nativeSize.width;
+	CGFloat h =  nativeSize.height;
+	return (w == d1 && h == d2) || (w == d2 && h == d1);
+}
+#define IS_OS_11_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0)
+#define IS_IPHONE          (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE_X        (IS_IPHONE && IS_OS_11_OR_LATER && checkScreenSize(1125, 2436))
 
 @interface DAPagesContainer () <DAPagesContainerTopBarDelegate, UIScrollViewDelegate>
 
@@ -84,7 +93,14 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:self.scrollView];
     [self startObservingContentOffsetForScrollView:self.scrollView];
-    
+
+    UIView *notchBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.,
+                                                                           0.,
+																																					 CGRectGetWidth(self.view.frame),
+																																					 self.topBarHeight)];
+    [self.view addSubview:notchBackgroundView];
+    notchBackgroundView.backgroundColor = self.topBarBackgroundColor;
+
     self.topBar = [[DAPagesContainerTopBar alloc] initWithFrame:CGRectMake(0.,
                                                                            0.,
                                                                            CGRectGetWidth(self.view.frame),
@@ -294,7 +310,11 @@
 
 - (void)layoutSubviews
 {
-    self.topBar.frame = CGRectMake(0., 0., CGRectGetWidth(self.view.bounds), self.topBarHeight);
+    CGFloat y = 0.;
+    if (IS_IPHONE_X) {
+			y = 33.;
+    }
+    self.topBar.frame = CGRectMake(0., y, CGRectGetWidth(self.view.bounds), self.topBarHeight);
     CGFloat x = 0.;
     for (UIViewController *viewController in self.viewControllers) {
         viewController.view.frame = CGRectMake(x, 0, CGRectGetWidth(self.scrollView.frame), self.scrollHeight);

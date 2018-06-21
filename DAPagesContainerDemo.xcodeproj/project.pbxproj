@@ -24,6 +24,7 @@
 		43222CC71768E4D30088986F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43222CC41768E4D30088986F /* MainStoryboard.storyboard */; };
 		438BA887175785B00033EB2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438BA886175785B00033EB2D /* UIKit.framework */; };
 		438BA88B175785B00033EB2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438BA88A175785B00033EB2D /* CoreGraphics.framework */; };
+		82F7C39220DB508000DF7A4B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82F7C39120DB508000DF7A4B /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		438BA886175785B00033EB2D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		438BA888175785B00033EB2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		438BA88A175785B00033EB2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		82F7C39120DB508000DF7A4B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DAPagesContainerDemo/Images.xcassets; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				43222CAA1768E4770088986F /* DAAppDelegate.m */,
 				43222CAB1768E4770088986F /* DAViewController.h */,
 				43222CAC1768E4770088986F /* DAViewController.m */,
+				82F7C39120DB508000DF7A4B /* Images.xcassets */,
 				438BA88D175785B00033EB2D /* Supporting Files */,
 			);
 			name = DAPagesContainerDemo;
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43222CB61768E48E0088986F /* Default-568h@2x.png in Resources */,
+				82F7C39220DB508000DF7A4B /* Images.xcassets in Resources */,
 				43222CB71768E48E0088986F /* Default.png in Resources */,
 				43222CB81768E48E0088986F /* Default@2x.png in Resources */,
 				43222CBE1768E49F0088986F /* beaver.jpg in Resources */,
@@ -310,6 +314,8 @@
 		438BA8A7175785B10033EB2D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DAPagesContainerDemo/DAPagesContainerDemo-Prefix.pch";
 				INFOPLIST_FILE = "DAPagesContainerDemo/DAPagesContainerDemo-Info.plist";
@@ -322,6 +328,8 @@
 		438BA8A8175785B10033EB2D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DAPagesContainerDemo/DAPagesContainerDemo-Prefix.pch";
 				INFOPLIST_FILE = "DAPagesContainerDemo/DAPagesContainerDemo-Info.plist";

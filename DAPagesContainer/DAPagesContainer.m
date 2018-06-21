@@ -92,10 +92,10 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
                                                                      CGRectGetHeight(self.view.frame) - self.topBarHeight)];
     if (IS_IPHONE_X) {
         self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.,
-                                                                         self.topBarHeight - [UIApplication sharedApplication].statusBarFrame.size.height,
+                                                                         self.topBarHeight - 20,
                                                                          CGRectGetWidth(self.view.frame),
                                                                          CGRectGetHeight(self.view.frame) - self.topBarHeight)];
-    		}
+    }
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
@@ -243,7 +243,7 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 - (void)setTopBarBackgroundColor:(UIColor *)topBarBackgroundColor
 {
     _topBarBackgroundColor = topBarBackgroundColor;
-    self.notchBackgroundView.backgroundColor = topBarBackgroundColor;
+    self.topBar.backgroundColor = topBarBackgroundColor;
     if ([self.pageIndicatorView isKindOfClass:[DAPageIndicatorView class]]) {
         [(DAPageIndicatorView *)self.pageIndicatorView setColor:topBarBackgroundColor];
     }
@@ -314,7 +314,7 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 {
     CGFloat y = 0.;
     if (IS_IPHONE_X) {
-			y = -[UIApplication sharedApplication].statusBarFrame.size.height;
+			y = -20.;
     }
     self.topBar.frame = CGRectMake(0., y, CGRectGetWidth(self.view.bounds), self.topBarHeight);
     CGFloat x = 0.;
@@ -354,7 +354,10 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 
 - (CGFloat)scrollHeight
 {
-    return CGRectGetHeight(self.view.frame) - self.topBarHeight + [UIApplication sharedApplication].statusBarFrame.size.height * 2;
+    if (IS_IPHONE_X) {
+        return CGRectGetHeight(self.view.frame) - self.topBarHeight + 40;
+    }
+    return CGRectGetHeight(self.view.frame) - self.topBarHeight;
 }
 
 - (CGFloat)scrollWidth

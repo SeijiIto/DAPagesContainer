@@ -94,12 +94,12 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
     [self.view addSubview:self.scrollView];
     [self startObservingContentOffsetForScrollView:self.scrollView];
 
-    UIView *notchBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.,
-                                                                           0.,
-																																					 CGRectGetWidth(self.view.frame),
-																																					 self.topBarHeight)];
-    [self.view addSubview:notchBackgroundView];
-    notchBackgroundView.backgroundColor = self.topBarBackgroundColor;
+    self.notchBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.,
+                                                                        0.,
+																																				CGRectGetWidth(self.view.frame),
+																																				self.topBarHeight)];
+    [self.view addSubview:self.notchBackgroundView];
+    self.notchBackgroundView.backgroundColor = self.topBarBackgroundColor;
 
     self.topBar = [[DAPagesContainerTopBar alloc] initWithFrame:CGRectMake(0.,
                                                                            0.,
@@ -242,6 +242,7 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 {
     _topBarBackgroundColor = topBarBackgroundColor;
     self.topBar.backgroundColor = topBarBackgroundColor;
+    self.notchBackgroundView.backgroundColor = topBarBackgroundColor;
     if ([self.pageIndicatorView isKindOfClass:[DAPageIndicatorView class]]) {
         [(DAPageIndicatorView *)self.pageIndicatorView setColor:topBarBackgroundColor];
     }

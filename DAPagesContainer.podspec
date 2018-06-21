@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DAPagesContainer"
-  s.version      = "1.0.5"
+  s.version      = "1.0.6"
   s.summary      = "A generic views container with a scrollable top bar."
   s.homepage     = "https://github.com/daria-kopaliani/DAPagesContainer.git"
   s.license      = 'MIT'

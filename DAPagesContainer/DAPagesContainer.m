@@ -112,6 +112,8 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
     self.topBar.delegate = self;
     [self.view addSubview:self.topBar];
     self.topBar.backgroundColor = self.topBarBackgroundColor;
+
+    [self layoutSubviews];
 }
 
 - (void)viewDidUnload

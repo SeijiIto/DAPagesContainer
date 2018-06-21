@@ -69,6 +69,9 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 - (void)setUp
 {
     _topBarHeight = 44.;
+    if (IS_IPHONE_X) {
+      _topBarHeight = 77.;
+    }
     _topBarBackgroundColor = [UIColor colorWithWhite:0.1 alpha:1.];
     _topBarItemLabelsFont = [UIFont systemFontOfSize:12];
     _pageIndicatorViewSize = CGSizeMake(22., 9.);
@@ -87,19 +90,18 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
                                                                      self.topBarHeight,
                                                                      CGRectGetWidth(self.view.frame),
                                                                      CGRectGetHeight(self.view.frame) - self.topBarHeight)];
+    if (IS_IPHONE_X) {
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.,
+                                                                         self.topBarHeight - [UIApplication sharedApplication].statusBarFrame.size.height,
+                                                                         CGRectGetWidth(self.view.frame),
+                                                                         CGRectGetHeight(self.view.frame) - self.topBarHeight)];
+    		}
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:self.scrollView];
     [self startObservingContentOffsetForScrollView:self.scrollView];
-
-    self.notchBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0.,
-                                                                        0.,
-																																				CGRectGetWidth(self.view.frame),
-																																				self.topBarHeight)];
-    [self.view addSubview:self.notchBackgroundView];
-    self.notchBackgroundView.backgroundColor = self.topBarBackgroundColor;
 
     self.topBar = [[DAPagesContainerTopBar alloc] initWithFrame:CGRectMake(0.,
                                                                            0.,
@@ -241,7 +243,6 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 - (void)setTopBarBackgroundColor:(UIColor *)topBarBackgroundColor
 {
     _topBarBackgroundColor = topBarBackgroundColor;
-    self.topBar.backgroundColor = topBarBackgroundColor;
     self.notchBackgroundView.backgroundColor = topBarBackgroundColor;
     if ([self.pageIndicatorView isKindOfClass:[DAPageIndicatorView class]]) {
         [(DAPageIndicatorView *)self.pageIndicatorView setColor:topBarBackgroundColor];
@@ -313,7 +314,7 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 {
     CGFloat y = 0.;
     if (IS_IPHONE_X) {
-			y = 33.;
+			y = -[UIApplication sharedApplication].statusBarFrame.size.height;
     }
     self.topBar.frame = CGRectMake(0., y, CGRectGetWidth(self.view.bounds), self.topBarHeight);
     CGFloat x = 0.;
@@ -353,7 +354,7 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 
 - (CGFloat)scrollHeight
 {
-    return CGRectGetHeight(self.view.frame) - self.topBarHeight;
+    return CGRectGetHeight(self.view.frame) - self.topBarHeight + [UIApplication sharedApplication].statusBarFrame.size.height * 2;
 }
 
 - (CGFloat)scrollWidth

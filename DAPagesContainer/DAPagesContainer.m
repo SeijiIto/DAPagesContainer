@@ -70,7 +70,7 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 {
     _topBarHeight = 44.;
     if (IS_IPHONE_X) {
-      _topBarHeight = 77.;
+      _topBarHeight = 44.;
     }
     _topBarBackgroundColor = [UIColor colorWithWhite:0.1 alpha:1.];
     _topBarItemLabelsFont = [UIFont systemFontOfSize:12];

@@ -79,6 +79,11 @@ CGFloat const DAPagesContainerTopBarItemsOffset = 30.;
 - (void)setItemTitles:(NSArray *)itemTitles
 {
     if (_itemTitles != itemTitles) {
+        for (id subview in self.scrollView.subviews) {
+            if ([subview isKindOfClass:[UIButton class]]) {
+                [(UIView *)subview removeFromSuperview];
+            }
+        }
         _itemTitles = itemTitles;
         NSMutableArray *mutableItemViews = [NSMutableArray arrayWithCapacity:itemTitles.count];
         for (NSUInteger i = 0; i < itemTitles.count; i++) {

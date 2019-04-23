@@ -20,6 +20,8 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 #define IS_OS_11_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0)
 #define IS_IPHONE          (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define IS_IPHONE_X        (IS_IPHONE && IS_OS_11_OR_LATER && checkScreenSize(1125, 2436))
+#define IS_IPHONE_XR       (IS_IPHONE && IS_OS_11_OR_LATER && checkScreenSize(828, 1792))
+#define IS_IPHONE_XS_MAX   (IS_IPHONE && IS_OS_11_OR_LATER && checkScreenSize(1242, 2688))
 
 @interface DAPagesContainer () <DAPagesContainerTopBarDelegate, UIScrollViewDelegate>
 
@@ -69,7 +71,7 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 - (void)setUp
 {
     _topBarHeight = 44.;
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X || IS_IPHONE_XR || IS_IPHONE_XS_MAX) {
       _topBarHeight = 77.;
     }
     _topBarBackgroundColor = [UIColor colorWithWhite:0.1 alpha:1.];
@@ -90,7 +92,7 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
                                                                      self.topBarHeight,
                                                                      CGRectGetWidth(self.view.frame),
                                                                      CGRectGetHeight(self.view.frame) - self.topBarHeight)];
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X || IS_IPHONE_XR || IS_IPHONE_XS_MAX) {
         self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.,
                                                                          self.topBarHeight - 20,
                                                                          CGRectGetWidth(self.view.frame),
@@ -315,7 +317,7 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 - (void)layoutSubviews
 {
     CGFloat y = 0.;
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X || IS_IPHONE_XR || IS_IPHONE_XS_MAX) {
 			y = -20.;
     }
     self.topBar.frame = CGRectMake(0., y, CGRectGetWidth(self.view.bounds), self.topBarHeight);
@@ -356,7 +358,7 @@ NS_INLINE BOOL checkScreenSize (CGFloat d1, CGFloat d2) {
 
 - (CGFloat)scrollHeight
 {
-    if (IS_IPHONE_X) {
+    if (IS_IPHONE_X || IS_IPHONE_XR || IS_IPHONE_XS_MAX) {
         return CGRectGetHeight(self.view.frame) - self.topBarHeight + 40;
     }
     return CGRectGetHeight(self.view.frame) - self.topBarHeight;
